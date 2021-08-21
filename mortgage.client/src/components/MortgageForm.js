@@ -14,6 +14,7 @@ import useForm from "./useForm";
 import { connect } from "react-redux";
 import * as actions from "../actions/mortageActions";
 import { useToasts } from "react-toast-notifications";
+import { Link } from "react-router-dom";
 
 const styles = (theme) => ({
   root: {
@@ -32,37 +33,36 @@ const styles = (theme) => ({
 });
 
 const initialFieldValues = {
-  fullName: "",
-  mobile: "",
-  email: "",
-  age: "",
-  bloodGroup: "",
-  address: "",
+  customerID: "",
+  mortgageType: "",
+  amount: "",
+  paymentType: "",
 };
 
 const MortgageForm = ({ classes, ...props }) => {
-  //toast msg.
   const { addToast } = useToasts();
 
-  //validate()
-  //validate({fullName:'jenny'})
   const validate = (fieldValues = values) => {
-    let temp = { ...errors };
-    if ("fullName" in fieldValues)
-      temp.fullName = fieldValues.fullName ? "" : "This field is required.";
-    if ("mobile" in fieldValues)
-      temp.mobile = fieldValues.mobile ? "" : "This field is required.";
-    if ("bloodGroup" in fieldValues)
-      temp.bloodGroup = fieldValues.bloodGroup ? "" : "This field is required.";
-    if ("email" in fieldValues)
-      temp.email = /^$|.+@.+..+/.test(fieldValues.email)
+    let validationErrors = { ...errors };
+    if ("mortgageType" in fieldValues)
+      validationErrors.mortgageType = fieldValues.mortgageType
         ? ""
-        : "Email is not valid.";
+        : "This field is required.";
+    if ("amount" in fieldValues)
+      validationErrors.amount = fieldValues.amount
+        ? ""
+        : "This field is required.";
+    if ("paymentType" in fieldValues)
+      validationErrors.paymentType = fieldValues.paymentType
+        ? ""
+        : "This field is required.";
+
     setErrors({
-      ...temp,
+      ...validationErrors,
     });
 
-    if (fieldValues == values) return Object.values(temp).every((x) => x == "");
+    if (fieldValues == values)
+      return Object.values(validationErrors).every((x) => x == "");
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -101,111 +101,87 @@ const MortgageForm = ({ classes, ...props }) => {
       <form
         autoComplete="off"
         noValidate
-        className={classes.root}
+        className={classes.formControl}
         onSubmit={handleSubmit}
       >
         <Grid container>
           <Grid item xs={3.2}>
             <br />
             <InputLabel className={classes.formControl} ref={inputLabel}>
-              Title
+              Mortgage Type
             </InputLabel>
             <br /> <br />
             <InputLabel className={classes.formControl} ref={inputLabel}>
-              First Name
+              Amount
             </InputLabel>
             <br /> <br />
             <InputLabel className={classes.formControl} ref={inputLabel}>
-              Last Name
-            </InputLabel>
-            <br /> <br />
-            <InputLabel className={classes.formControl} ref={inputLabel}>
-              DOB{" "}
-            </InputLabel>
-            <br /> <br />
-            <InputLabel className={classes.formControl} ref={inputLabel}>
-              Smoke/NonSMoker
-            </InputLabel>
-            <br /> <br />
-            <InputLabel className={classes.formControl} ref={inputLabel}>
-              Addresss
+              Payment Type
             </InputLabel>
             <br /> <br />
           </Grid>
           <Grid item xs={6}>
-            <TextField
-              name="fullName"
-              variant="outlined"
-              label="Full Name"
-              value={values.fullName}
-              onChange={handleInputChange}
-              {...(errors.fullName && {
-                error: true,
-                helperText: errors.fullName,
-              })}
-            />
-            <TextField
-              name="email"
-              variant="outlined"
-              label="Email"
-              value={values.email}
-              onChange={handleInputChange}
-              {...(errors.email && { error: true, helperText: errors.email })}
-            />
             <FormControl
               variant="outlined"
               className={classes.formControl}
-              {...(errors.bloodGroup && { error: true })}
+              // {...(errors.bloodGroup && { error: true })}
             >
-              <InputLabel ref={inputLabel}>Blood Group</InputLabel>
-              <Select
-                name="bloodGroup"
-                value={values.bloodGroup}
-                onChange={handleInputChange}
-                labelWidth={labelWidth}
-              >
-                <MenuItem value="">Select Blood Group</MenuItem>
-                <MenuItem value="A+">A +ve</MenuItem>
-                <MenuItem value="A-">A -ve</MenuItem>
-                <MenuItem value="B+">B +ve</MenuItem>
-                <MenuItem value="B-">B -ve</MenuItem>
-                <MenuItem value="AB+">AB +ve</MenuItem>
-                <MenuItem value="AB-">AB -ve</MenuItem>
-                <MenuItem value="O+">O +ve</MenuItem>
-                <MenuItem value="O-">O -ve</MenuItem>
-              </Select>
-              {errors.bloodGroup && (
-                <FormHelperText>{errors.bloodGroup}</FormHelperText>
-              )}
-
               <TextField
-                name="mobile"
+                name="mortgageType"
                 variant="outlined"
-                label="Mobile"
-                value={values.mobile}
+                label="Mortgage Type"
+                value={values.mortgageType}
                 onChange={handleInputChange}
-                {...(errors.mobile && {
+                {...(errors.mortgageType && {
                   error: true,
-                  helperText: errors.mobile,
+                  helperText: errors.mortgageType,
                 })}
               />
+              <br />
               <TextField
-                name="age"
+                name="amount"
                 variant="outlined"
-                label="Age"
-                value={values.age}
+                label="Amount"
+                value={values.amount}
                 onChange={handleInputChange}
+                {...(errors.amount && {
+                  error: true,
+                  helperText: errors.amount,
+                })}
               />
-              <TextField
-                name="address"
-                variant="outlined"
-                label="Address"
-                value={values.address}
+              <br />
+              {/* <InputLabel ref={inputLabel}>Blood Group</InputLabel> */}
+              <Select
+                name="paymentType"
+                value={values.paymentType}
                 onChange={handleInputChange}
+                labelWidth={labelWidth}
+                displayEmpty
+              >
+                <MenuItem value="">Select Payment Type</MenuItem>
+                <MenuItem value="Monthly">Monthly</MenuItem>
+                <MenuItem value="Yearly">Yearly</MenuItem>
+              </Select>
+              {errors.paymentType && (
+                <FormHelperText>{errors.paymentType}</FormHelperText>
+              )}
+              <br />
+              <TextField
+                name="customerID"
+                value={values.id}
+                onChange={handleInputChange}
+                type="hidden"
               />
             </FormControl>
 
             <div>
+              <Button
+                variant="contained"
+                className={classes.smMargin}
+                onClick={resetForm}
+              >
+                Reset
+              </Button>
               <Button
                 variant="contained"
                 color="primary"
@@ -214,17 +190,27 @@ const MortgageForm = ({ classes, ...props }) => {
               >
                 Submit
               </Button>
-              <Button
-                variant="contained"
-                className={classes.smMargin}
-                onClick={resetForm}
-              >
-                Reset
-              </Button>
+              {/* <Button
+                  style={{ float: "right" }}
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                  className={classes.smMargin} 
+                >   <Link to='/Mortgage'> NEXT MMMM {props.currentCustmer.fullName}</Link></Button> */}
             </div>
           </Grid>
         </Grid>
       </form>
+      <Button
+        style={{ float: "right" }}
+        variant="contained"
+        color="primary"
+        type="submit"
+        className={classes.smMargin}
+        onClick={(event) => (window.location.href = "/Dashboard")}
+      >
+        NEXT
+      </Button>
     </div>
   );
 };

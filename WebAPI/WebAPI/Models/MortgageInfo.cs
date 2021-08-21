@@ -10,23 +10,19 @@ namespace WebAPI.Models
     public class MortgageInfo
     {
         [Key]
-        public int id { get; set; }
+        public int ID { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
-        public string fullName { get; set; }
+        public string CustomerID { get; set; }
 
         [Column(TypeName = "nvarchar(16)")]
-        public string mobile { get; set; }
+        public string MortgageType { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
-        public string email { get; set; }
-
-        public int age { get; set; }
-
-        [Column(TypeName = "nvarchar(3)")]
-        public string bloodGroup { get; set; }
+        public string Amount { get; set; }
 
         [Column(TypeName = "nvarchar(100)")]
-        public string address { get; set; }
+        public string PaymentType { get; set; }
+
     }
 }

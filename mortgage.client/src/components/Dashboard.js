@@ -14,11 +14,11 @@ import {
   ButtonGroup,
   Button,
 } from "@material-ui/core";
-import DCandidateForm from "./Customer";
+
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useToasts } from "react-toast-notifications";
-
+import MortgageForm from "./MortgageForm";
 import { Link } from "react-router-dom";
 
 const styles = (theme) => ({
@@ -33,7 +33,7 @@ const styles = (theme) => ({
   },
 });
 
-const DCandidates = ({ classes, ...props }) => {
+const DashBoard = ({ classes, ...props }) => {
   const [currentId, setCurrentId] = useState(0);
 
   useEffect(() => {
@@ -59,18 +59,21 @@ const DCandidates = ({ classes, ...props }) => {
 
   return (
     <Paper className={classes.paper} elevation={3}>
+      Customer Name: "Sundeep Gupta"
+      <br />
+      {/* <DCandidateForm {...{ currentId, setCurrentId }} /> */}
       <Grid container>
         <Grid item xs={6}>
-          {/* <DCandidateForm {...{ currentId, setCurrentId }} /> */}
+          {/* <MortgageForm {...{ currentId, setCurrentId }} /> */}
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={10}>
           <TableContainer>
             <Table>
               <TableHead className={classes.root}>
                 <TableRow>
-                  <TableCell>Name</TableCell>
-                  <TableCell>Mobile</TableCell>
-                  <TableCell>Blood Group</TableCell>
+                  <TableCell>MortgageType</TableCell>
+                  <TableCell>Amount</TableCell>
+                  <TableCell>PaymentType</TableCell>
                   <TableCell></TableCell>
                 </TableRow>
               </TableHead>
@@ -78,21 +81,39 @@ const DCandidates = ({ classes, ...props }) => {
                 {props.dCandidateList.map((record, index) => {
                   return (
                     <TableRow key={index} hover>
-                      <TableCell>{record.fullName}</TableCell>
-                      <TableCell>{record.mobile}</TableCell>
-                      <TableCell>{record.bloodGroup}</TableCell>
+                      {/* <TableCell>{record.customerID}</TableCell> */}
+                      <TableCell>{record.mortgageType}</TableCell>
+                      <TableCell>{record.amount}</TableCell>
+                      <TableCell>{record.paymentType}</TableCell>
                       <TableCell>
                         <ButtonGroup variant="text">
                           <Button>
                             <EditIcon
                               color="primary"
-                              onClick={() => {
-                                props.setCurrentCustomer(record);
-                                setCurrentId(record.id);
-                              }}
-                            />
+                              // onClick={() => {
+                              //   (event) => (window.location.href = "/Mortgage"),
+                              //     props.SetCurrentMortgage(record),
+                              //     setCurrentId(record.id);
+                              // }}
+                              onClick={(event) =>
+                                (window.location.href = "/Mortgage")
+                              }
+                            ></EditIcon>
                           </Button>
-                          <Button>
+                          {/* <Button
+                            style={{ float: "right" }}
+                            variant="contained"
+                            color="primary"
+                            type="submit"
+                            className={classes.smMargin}
+                          >
+                            {/* {" "}
+                            <Link to="/Mortgage">
+                              {" "}
+                              NEXT MMMM {props.currentCustmer.fullName}
+                            </Link> */}
+                          {/* </Button> */}
+                          <Button> 
                             <DeleteIcon
                               color="secondary"
                               onClick={() => onDelete(record.id)}
@@ -108,7 +129,7 @@ const DCandidates = ({ classes, ...props }) => {
                 <br />
                 <br />
                 {/* {/* <Button onClick={()=> history.push("/mypage")}>Click me!</Button> */}
-                <Button
+                {/* <Button
                   style={{ float: "right" }}
                   variant="contained"
                   color="primary"
@@ -117,7 +138,7 @@ const DCandidates = ({ classes, ...props }) => {
                 >
                   {" "}
                   <Link to="/Mortgage"> NEXT </Link>
-                </Button>
+                </Button> */}
               </TableHead>
             </Table>
           </TableContainer>
@@ -131,13 +152,21 @@ const mapStateToProps = (state) => ({
   dCandidateList: state.dCandidate.list,
 });
 
+// const mapStateToProps = (state) => {
+//   console.log(state)
+//   return {
+// dCandidateList: state..list,
+// currentCustmer: state.dCandidate.CurrentCustmer,
+// };
+// };
+
 const mapActionToProps = {
   fetchAllDCandidates: actions.fetchAll,
   deleteDCandidate: actions.Delete,
-  setCurrentCustomer: actions.SetCurrentCustomer,
+  SetCurrentMortgage: actions.SetCurrentMortgage,
 };
 
 export default connect(
   mapStateToProps,
   mapActionToProps
-)(withStyles(styles)(DCandidates));
+)(withStyles(styles)(DashBoard));

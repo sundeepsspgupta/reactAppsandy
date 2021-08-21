@@ -16,7 +16,15 @@ namespace WebAPI.Models
         public DbSet<DCandidate> DCandidates { get; set; }
         public DbSet<MortgageInfo> MortgageInfo { get; set; }
 
+        public DbSet<MortgageType> MortgageType { get; set; }
+
         public DbSet<Customer> Customer { get; set; }
+    }
+
+    public class MortgageType
+    {
+        public int ID { get; set; }
+        public string MortgageName { get; set; }
     }
 
     public class Customer

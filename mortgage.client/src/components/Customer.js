@@ -15,7 +15,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions/dCandidate";
 import { useToasts } from "react-toast-notifications";
 
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const styles = (theme) => ({
   root: {
@@ -84,6 +84,7 @@ const CustomerForm = ({ classes, ...props }) => {
   }, []);
 
   const handleSubmit = (e) => {
+    debugger;
     e.preventDefault();
     if (validate()) {
       const onSuccess = () => {
@@ -113,7 +114,7 @@ const CustomerForm = ({ classes, ...props }) => {
         onSubmit={handleSubmit}
       >
         <Grid container>
-          <Grid item xs={6}>
+          <Grid item xs={2}>
             <br />
             <InputLabel className={classes.formControl} ref={inputLabel}>
               Title
@@ -225,12 +226,15 @@ const CustomerForm = ({ classes, ...props }) => {
               </Button>
 
               <Button
-                  style={{ float: "right" }}
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  className={classes.smMargin} 
-                >   <Link to='/Mortgage'> NEXT  </Link></Button>
+                style={{ float: "right" }}
+                variant="contained"
+                color="primary"
+                type="submit"
+                className={classes.smMargin}
+                onClick={(event) => (window.location.href = "/Mortgage")}
+              >
+                NEXT
+              </Button>
             </div>
           </Grid>
         </Grid>

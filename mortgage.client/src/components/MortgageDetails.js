@@ -19,7 +19,7 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useToasts } from "react-toast-notifications";
 
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 const styles = (theme) => ({
   root: {
@@ -37,7 +37,7 @@ const MortgageDetails = ({ classes, ...props }) => {
   const [currentId, setCurrentId] = useState(0);
 
   useEffect(() => {
-      console.error('Mortgage useEffects');
+    console.error("Mortgage useEffects");
     props.fetchAllDCandidates();
   }, []); //componentDidMount
 
@@ -64,82 +64,17 @@ const MortgageDetails = ({ classes, ...props }) => {
         <Grid item xs={6}>
           <MortgageForm {...{ currentId, setCurrentId }} />
         </Grid>
-        <Grid item xs={6}>
-          <TableContainer>
-            <Table>
-              <TableHead className={classes.root}>
-                <TableRow>
-                  <TableCell>Name</TableCell>
-                  <TableCell>Mobile</TableCell>
-                  <TableCell>Blood Group</TableCell>
-                  <TableCell></TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody styles={"height: 400px; overflow: scroll;"}>
-                {props.dCandidateList.map((record, index) => {
-                  return (
-                    <TableRow key={index} hover>
-                      <TableCell>{record.fullName}</TableCell>
-                      <TableCell>{record.mobile}</TableCell>
-                      <TableCell>{record.bloodGroup}</TableCell>
-                      <TableCell>
-                        <ButtonGroup variant="text">
-                          <Button>
-                            <EditIcon
-                              color="primary"
-                              onClick={() => {
-                                setCurrentId(record.id);
-                              }}
-                            />
-                          </Button>
-                          <Button>
-                            <DeleteIcon
-                              color="secondary"
-                              onClick={() => onDelete(record.id)}
-                            />
-                          </Button>
-                        </ButtonGroup>
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-              <TableHead className={classes.root}>
-                <br />
-                <br />
-                {/* <Button onClick={()=> history.push("/mypage")}>Click me!</Button> */}
-                {/* <Button
-                  style={{ float: "right" }}
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  className={classes.smMargin} 
-                >   <Link to='/Mortgage'> NEXT MMMM {props.currentCustmer.fullName}</Link></Button> */}
-
-                {/* newly added */}
-
-                <Button
-                  style={{ float: "right" }}
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  className={classes.smMargin} 
-                >   <Link to='/Dashboard'> NEXT MMMM </Link></Button>
-              </TableHead>
-            </Table>
-          </TableContainer>
-        </Grid>
       </Grid>
     </Paper>
   );
 };
 
 const mapStateToProps = (state) => {
-    console.log(state)
-    return {
-  dCandidateList: state.dCandidate.list,
-  currentCustmer: state.dCandidate.CurrentCustmer,
-};
+  console.log(state);
+  return {
+    dCandidateList: state.dCandidate.list,
+    currentCustmer: state.dCandidate.CurrentCustmer,
+  };
 };
 
 const mapActionToProps = {

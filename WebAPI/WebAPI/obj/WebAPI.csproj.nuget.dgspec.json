@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "E:\\_workAreaDev\\_ADev\\_mortgageProject\\Backup_160821\\Back_up2\\WebAPI\\WebAPI\\WebAPI.csproj": {}
+    "E:\\_workAreaDev\\_ADev\\_mortgageProject\\Backup_160821\\Back_up2\\reactappsandy\\WebAPI\\WebAPI\\WebAPI.csproj": {}
   },
   "projects": {
-    "E:\\_workAreaDev\\_ADev\\_mortgageProject\\Backup_160821\\Back_up2\\WebAPI\\WebAPI\\WebAPI.csproj": {
+    "E:\\_workAreaDev\\_ADev\\_mortgageProject\\Backup_160821\\Back_up2\\reactappsandy\\WebAPI\\WebAPI\\WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\_workAreaDev\\_ADev\\_mortgageProject\\Backup_160821\\Back_up2\\WebAPI\\WebAPI\\WebAPI.csproj",
+        "projectUniqueName": "E:\\_workAreaDev\\_ADev\\_mortgageProject\\Backup_160821\\Back_up2\\reactappsandy\\WebAPI\\WebAPI\\WebAPI.csproj",
         "projectName": "WebAPI",
-        "projectPath": "E:\\_workAreaDev\\_ADev\\_mortgageProject\\Backup_160821\\Back_up2\\WebAPI\\WebAPI\\WebAPI.csproj",
+        "projectPath": "E:\\_workAreaDev\\_ADev\\_mortgageProject\\Backup_160821\\Back_up2\\reactappsandy\\WebAPI\\WebAPI\\WebAPI.csproj",
         "packagesPath": "C:\\Users\\sunde\\.nuget\\packages\\",
-        "outputPath": "E:\\_workAreaDev\\_ADev\\_mortgageProject\\Backup_160821\\Back_up2\\WebAPI\\WebAPI\\obj\\",
+        "outputPath": "E:\\_workAreaDev\\_ADev\\_mortgageProject\\Backup_160821\\Back_up2\\reactappsandy\\WebAPI\\WebAPI\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",

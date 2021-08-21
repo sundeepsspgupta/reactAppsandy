@@ -1,6 +1,7 @@
 import api from "./api";
 
 export const ACTION_TYPES = {
+    SET_CURRENT_MORTGAGE: 'SET_CURRENT_MORTGAGE',
     CREATE: 'CREATE',
     UPDATE: 'UPDATE',
     DELETE: 'DELETE',
@@ -59,4 +60,11 @@ export const Delete = (id, onSuccess) => dispatch => {
             onSuccess()
         })
         .catch(err => console.log(err))
+}
+
+export const SetCurrentMortgage = (MortgageForm) => dispatch => {
+    dispatch({
+        type: ACTION_TYPES.SET_CURRENT_MORTGAGE,
+        payload: MortgageForm
+    })
 }

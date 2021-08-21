@@ -45,11 +45,11 @@ namespace WebAPI.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutDCandidate(int id, MortgageInfo dCandidate)
+        public async Task<IActionResult> PutDCandidate(int id, MortgageInfo mortgageInfo)
         {
-            dCandidate.id = id;
+            mortgageInfo.ID = id;
 
-            _context.Entry(dCandidate).State = EntityState.Modified;
+            _context.Entry(mortgageInfo).State = EntityState.Modified;
 
             try
             {
@@ -74,12 +74,12 @@ namespace WebAPI.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for
         // more details see https://aka.ms/RazorPagesCRUD.
         [HttpPost]
-        public async Task<ActionResult<MortgageInfo>> PostDCandidate(MortgageInfo dCandidate)
+        public async Task<ActionResult<MortgageInfo>> PostDCandidate(MortgageInfo mortgageInfo)
         {
-            _context.MortgageInfo.Add(dCandidate);
+            _context.MortgageInfo.Add(mortgageInfo);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetDCandidate", new { id = dCandidate.id }, dCandidate);
+            return CreatedAtAction("GetDCandidate", new { id = mortgageInfo.ID }, mortgageInfo);
         }
 
         // DELETE: api/DCandidate/5
@@ -100,7 +100,7 @@ namespace WebAPI.Controllers
 
         private bool DCandidateExists(int id)
         {
-            return _context.MortgageInfo.Any(e => e.id == id);
+            return _context.MortgageInfo.Any(e => e.ID == id);
         }
     }
 }
