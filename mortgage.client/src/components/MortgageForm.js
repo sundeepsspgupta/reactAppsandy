@@ -15,7 +15,7 @@ import { connect } from "react-redux";
 import * as actions from "../actions/mortageActions";
 import { useToasts } from "react-toast-notifications";
 
-//import PopulateMigrationTypeCombo from "./populateCombo";
+// import PopulateMigrationTypeCombo from "./populateCombo";
 
 const styles = (theme) => ({
   root: {

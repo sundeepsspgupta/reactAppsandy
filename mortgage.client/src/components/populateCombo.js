@@ -81,7 +81,7 @@ const PopulateCombo = ({ classes, ...props }) => {
 };
 
 const mapStateToProps = (state) => ({
-  populateComboList: state.dCandidate.list,
+  populateComboList: state.customer.list,
 });
 
 const mapActionToProps = {
