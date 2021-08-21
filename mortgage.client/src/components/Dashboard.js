@@ -56,49 +56,50 @@ const DashBoard = ({ classes, ...props }) => {
   };
 
   return (
-    <Paper className={classes.paper} elevation={3}>
-      Customer Name: "Sundeep Gupta"
-      <br />
-      {/* <DCandidateForm {...{ currentId, setCurrentId }} /> */}
-      <Grid container>
-        <Grid item xs={6}>
-          {/* <MortgageForm {...{ currentId, setCurrentId }} /> */}
-        </Grid>
-        <Grid item xs={10}>
-          <TableContainer>
-            <Table>
-              <TableHead className={classes.root}>
-                <TableRow>
-                  <TableCell>MortgageType</TableCell>
-                  <TableCell>Amount</TableCell>
-                  <TableCell>PaymentType</TableCell>
-                  <TableCell></TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody styles={"height: 400px; overflow: scroll;"}>
-                {props.customerList.map((record, index) => {
-                  return (
-                    <TableRow key={index} hover>
-                      {/* <TableCell>{record.customerID}</TableCell> */}
-                      <TableCell>{record.mortgageType}</TableCell>
-                      <TableCell>{record.amount}</TableCell>
-                      <TableCell>{record.paymentType}</TableCell>
-                      <TableCell>
-                        <ButtonGroup variant="text">
-                          <Button>
-                            <EditIcon
-                              color="primary"
-                              // onClick={() => {
-                              //   (event) => (window.location.href = "/Mortgage"),
-                              //     props.SetCurrentMortgage(record),
-                              //     setCurrentId(record.id);
-                              // }}
-                              onClick={(event) =>
-                                (window.location.href = "/Mortgage")
-                              }
-                            ></EditIcon>
-                          </Button>
-                          {/* <Button
+    <div>
+      <Paper className={classes.paper} elevation={3}>
+        Customer Name: "Sundeep Gupta"
+        <br />
+        {/* <DCandidateForm {...{ currentId, setCurrentId }} /> */}
+        <Grid container>
+          <Grid item xs={6}>
+            {/* <MortgageForm {...{ currentId, setCurrentId }} /> */}
+          </Grid>
+          <Grid item xs={10}>
+            <TableContainer>
+              <Table>
+                <TableHead className={classes.root}>
+                  <TableRow>
+                    <TableCell>MortgageType</TableCell>
+                    <TableCell>Amount</TableCell>
+                    <TableCell>PaymentType</TableCell>
+                    <TableCell></TableCell>
+                  </TableRow>
+                </TableHead>
+                <TableBody styles={"height: 400px; overflow: scroll;"}>
+                  {props.customerList.map((record, index) => {
+                    return (
+                      <TableRow key={index} hover>
+                        {/* <TableCell>{record.customerID}</TableCell> */}
+                        <TableCell>{record.mortgageType}</TableCell>
+                        <TableCell>{record.amount}</TableCell>
+                        <TableCell>{record.paymentType}</TableCell>
+                        <TableCell>
+                          <ButtonGroup variant="text">
+                            <Button>
+                              <EditIcon
+                                color="primary"
+                                // onClick={() => {
+                                //   (event) => (window.location.href = "/Mortgage"),
+                                //     props.SetCurrentMortgage(record),
+                                //     setCurrentId(record.id);
+                                // }}
+                                onClick={(event) =>
+                                  (window.location.href = "/Mortgage")
+                                }
+                              ></EditIcon>
+                            </Button>
+                            {/* <Button
                             style={{ float: "right" }}
                             variant="contained"
                             color="primary"
@@ -110,28 +111,41 @@ const DashBoard = ({ classes, ...props }) => {
                               {" "}
                               NEXT MMMM {props.currentCustmer.fullName}
                             </Link> */}
-                          {/* </Button> */}
-                          <Button>
-                            <DeleteIcon
-                              color="inherit"
-                              onClick={() => onDelete(record.id)}
-                            />
-                          </Button>
-                        </ButtonGroup>
-                      </TableCell>
-                    </TableRow>
-                  );
-                })}
-              </TableBody>
-              <TableHead className={classes.root}>
-                <br />
-                <br />
-              </TableHead>
-            </Table>
-          </TableContainer>
+                            {/* </Button> */}
+                            <Button>
+                              <DeleteIcon
+                                color=""
+                                onClick={() => onDelete(record.id)}
+                              />
+                            </Button>
+                          </ButtonGroup>
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })}
+                </TableBody>
+                <TableHead className={classes.root}>
+                  <br />
+                  <br />
+                </TableHead>
+              </Table>
+            </TableContainer>
+          </Grid>
         </Grid>
-      </Grid>
-    </Paper>
+      </Paper>
+      <div>
+        <Button
+          style={{ float: "right" }}
+          variant="contained"
+          color="primary"
+          type="submit"
+          className={classes.smMargin}
+          onClick={(event) => (window.location.href = "/Mortgage")}
+        >
+          Previous
+        </Button>
+      </div>
+    </div>
   );
 };
 

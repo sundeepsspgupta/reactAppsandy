@@ -67,16 +67,28 @@ const MortgageDetails = ({ classes, ...props }) => {
           </Grid>
         </Grid>
       </Paper>
-      <Button
-        style={{ float: "right" }}
-        variant="contained"
-        color="primary"
-        type="submit"
-        className={classes.smMargin}
-        onClick={(event) => (window.location.href = "/Dashboard")}
-      >
-        NEXT
-      </Button>
+      <div>
+        <Button
+          style={{ float: "left" }}
+          variant="contained"
+          color="primary"
+          type="submit"
+          className={classes.smMargin}
+          onClick={(event) => (window.location.href = "/")}
+        >
+          Previous
+        </Button>
+        <Button
+          style={{ float: "right" }}
+          variant="contained"
+          color="primary"
+          type="submit"
+          className={classes.smMargin}
+          onClick={(event) => (window.location.href = "/Dashboard")}
+        >
+          NEXT
+        </Button>
+      </div>
     </div>
   );
 };
