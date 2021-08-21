@@ -13,9 +13,9 @@ const formateData = data => ({
     age: parseInt(data.age ? data.age : 0)
 })
 
-//distahc is guven by thunk - injected by thunk
+//dispatch is guven by thunk - injected by thunk
 export const fetchAll = () => dispatch => {
-    api.dCandidate().fetchAll()
+    api.customer().fetchAll()
         .then(response => {
             dispatch({
                 type: ACTION_TYPES.FETCH_ALL,
@@ -27,7 +27,7 @@ export const fetchAll = () => dispatch => {
 
 export const create = (data, onSuccess) => dispatch => {
     data = formateData(data)
-    api.dCandidate().create(data)
+    api.customer().create(data)
         .then(res => {
             dispatch({
                 type: ACTION_TYPES.CREATE,
@@ -40,7 +40,7 @@ export const create = (data, onSuccess) => dispatch => {
 
 export const update = (id, data, onSuccess) => dispatch => {
     data = formateData(data)
-    api.dCandidate().update(id, data)
+    api.customer().update(id, data)
         .then(res => {
             dispatch({
                 type: ACTION_TYPES.UPDATE,
@@ -52,7 +52,7 @@ export const update = (id, data, onSuccess) => dispatch => {
 }
 
 export const Delete = (id, onSuccess) => dispatch => {
-    api.dCandidate().delete(id)
+    api.customer().delete(id)
         .then(res => {
             dispatch({
                 type: ACTION_TYPES.DELETE,

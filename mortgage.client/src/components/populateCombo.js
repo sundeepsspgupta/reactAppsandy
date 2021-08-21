@@ -57,7 +57,7 @@ const PopulateCombo = ({ classes, ...props }) => {
   useEffect(() => {
     if (props.currentId != 0) {
       setValues({
-        ...props.dCandidateList.find((x) => x.id == props.currentId),
+        ...props.customerList.find((x) => x.id == props.currentId),
       });
       setErrors({});
     }

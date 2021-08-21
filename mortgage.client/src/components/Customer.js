@@ -12,10 +12,9 @@ import {
 } from "@material-ui/core";
 import useForm from "./useForm";
 import { connect } from "react-redux";
-import * as actions from "../actions/dCandidate";
+import * as actions from "../actions/customer";
 import { useToasts } from "react-toast-notifications";
 
-import { Link } from "react-router-dom";
 
 const styles = (theme) => ({
   root: {
@@ -84,7 +83,7 @@ const CustomerForm = ({ classes, ...props }) => {
   }, []);
 
   const handleSubmit = (e) => {
-    debugger;
+    
     e.preventDefault();
     if (validate()) {
       const onSuccess = () => {

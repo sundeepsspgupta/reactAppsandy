@@ -18,8 +18,7 @@ import {
 import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useToasts } from "react-toast-notifications";
-import MortgageForm from "./MortgageForm";
-import { Link } from "react-router-dom";
+
 
 const styles = (theme) => ({
   root: {
@@ -78,7 +77,7 @@ const DashBoard = ({ classes, ...props }) => {
                 </TableRow>
               </TableHead>
               <TableBody styles={"height: 400px; overflow: scroll;"}>
-                {props.dCandidateList.map((record, index) => {
+                {props.customerList.map((record, index) => {
                   return (
                     <TableRow key={index} hover>
                       {/* <TableCell>{record.customerID}</TableCell> */}
@@ -149,7 +148,7 @@ const DashBoard = ({ classes, ...props }) => {
 };
 
 const mapStateToProps = (state) => ({
-  dCandidateList: state.dCandidate.list,
+  customerList: state.customer.list,
 });
 
 // const mapStateToProps = (state) => {

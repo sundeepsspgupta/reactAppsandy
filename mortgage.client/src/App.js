@@ -5,7 +5,7 @@ import { store } from "./actions/store";
 import { Provider } from "react-redux";
 import { Container } from "@material-ui/core";
 import { ToastProvider } from "react-toast-notifications";
-import { Switch, Route, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, Router } from 'react-router-dom';
 
 import Customer from "./components/Customer";
 import MortgageDetails from "./components/MortgageDetails";
@@ -17,7 +17,7 @@ function App() {
   return (
     <Provider store={store}>
       <ToastProvider autoDismiss={true}>
-        <BrowserRouter history={history}>
+        <Router history={history}>
           <Container maxWidth="lg">
             <div>
               <h2>Mortgage Application</h2>
@@ -32,7 +32,7 @@ function App() {
 
             {/* <DCandidates /> */}
           </Container>
-        </BrowserRouter>
+        </Router>
       </ToastProvider>
     </Provider>
   );

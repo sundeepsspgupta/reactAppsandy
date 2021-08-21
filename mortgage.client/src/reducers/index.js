@@ -1,10 +1,10 @@
 import { combineReducers } from "redux";
-import { dCandidate } from "./dCandidate";
+import { customer } from "./customer";
 import { mortgageReducers } from "./mortgage";
 import { dashboardReducers } from "./dashboard";
 
 export const reducers = combineReducers({
-    dCandidate,
+    customer,
     mortgageReducers,
     dashboardReducers
 })

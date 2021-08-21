@@ -37,7 +37,7 @@ const MortgageDetails = ({ classes, ...props }) => {
   const [currentId, setCurrentId] = useState(0);
 
   useEffect(() => {
-    console.error("Mortgage useEffects");
+    // console.error("Mortgage useEffects");
     props.fetchAllDCandidates();
   }, []); //componentDidMount
 
@@ -72,8 +72,8 @@ const MortgageDetails = ({ classes, ...props }) => {
 const mapStateToProps = (state) => {
   console.log(state);
   return {
-    dCandidateList: state.dCandidate.list,
-    currentCustmer: state.dCandidate.CurrentCustmer,
+    customerList: state.customer.list,
+    currentCustmer: state.customer.CurrentCustmer,
   };
 };
 

@@ -14,7 +14,7 @@ import useForm from "./useForm";
 import { connect } from "react-redux";
 import * as actions from "../actions/mortageActions";
 import { useToasts } from "react-toast-notifications";
-import { Link } from "react-router-dom";
+
 //import PopulateMigrationTypeCombo from "./populateCombo";
 
 const styles = (theme) => ({
@@ -91,7 +91,7 @@ const MortgageForm = ({ classes, ...props }) => {
   useEffect(() => {
     if (props.currentId != 0) {
       setValues({
-        ...props.dCandidateList.find((x) => x.id == props.currentId),
+        ...props.customerList.find((x) => x.id == props.currentId),
       });
       setErrors({});
     }
@@ -106,7 +106,7 @@ const MortgageForm = ({ classes, ...props }) => {
         onSubmit={handleSubmit}
       >
         <Grid container>
-          <Grid item xs={3.2}>
+          <Grid item xs={3}>
             <br />
             <InputLabel className={classes.formControl} ref={inputLabel}>
               Mortgage Type
@@ -218,7 +218,7 @@ const MortgageForm = ({ classes, ...props }) => {
 };
 
 const mapStateToProps = (state) => ({
-  dCandidateList: state.dCandidate.list,
+  dCandidateList: state.customer.list,
 });
 
 const mapActionToProps = {

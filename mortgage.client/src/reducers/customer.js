@@ -1,10 +1,10 @@
-import { ACTION_TYPES } from "../actions/dCandidate";
+import { ACTION_TYPES } from "../actions/customer";
 const initialState = {
     list: []
 }
 
 
-export const dCandidate = (state = initialState, action) => {
+export const customer = (state = initialState, action) => {
 
     switch (action.type) {
         case ACTION_TYPES.FETCH_ALL:
