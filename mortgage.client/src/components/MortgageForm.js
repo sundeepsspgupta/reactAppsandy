@@ -106,7 +106,7 @@ const MortgageForm = ({ classes, ...props }) => {
         onSubmit={handleSubmit}
       >
         <Grid container>
-          <Grid item xs={3}>
+          <Grid item xs={6}>
             <br />
             <InputLabel className={classes.formControl} ref={inputLabel}>
               Mortgage Type
