@@ -19,7 +19,6 @@ import EditIcon from "@material-ui/icons/Edit";
 import DeleteIcon from "@material-ui/icons/Delete";
 import { useToasts } from "react-toast-notifications";
 
-
 const styles = (theme) => ({
   root: {
     "& .MuiTableCell-head": {
@@ -112,9 +111,9 @@ const DashBoard = ({ classes, ...props }) => {
                               NEXT MMMM {props.currentCustmer.fullName}
                             </Link> */}
                           {/* </Button> */}
-                          <Button> 
+                          <Button>
                             <DeleteIcon
-                              color="secondary"
+                              color="inherit"
                               onClick={() => onDelete(record.id)}
                             />
                           </Button>
@@ -127,17 +126,6 @@ const DashBoard = ({ classes, ...props }) => {
               <TableHead className={classes.root}>
                 <br />
                 <br />
-                {/* {/* <Button onClick={()=> history.push("/mypage")}>Click me!</Button> */}
-                {/* <Button
-                  style={{ float: "right" }}
-                  variant="contained"
-                  color="primary"
-                  type="submit"
-                  className={classes.smMargin}
-                >
-                  {" "}
-                  <Link to="/Mortgage"> NEXT </Link>
-                </Button> */}
               </TableHead>
             </Table>
           </TableContainer>

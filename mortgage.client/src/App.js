@@ -19,8 +19,8 @@ function App() {
       <ToastProvider autoDismiss={true}>
         <Router history={history}>
           <Container maxWidth="lg">
-            <div>
-              <h2>Mortgage Application</h2>
+            <div  class="divApp-header" >
+              <h2 >Mortgage Application</h2>
             </div>
 
             <Switch>

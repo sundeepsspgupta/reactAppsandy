@@ -62,8 +62,8 @@ const MortgageForm = ({ classes, ...props }) => {
       ...validationErrors,
     });
 
-    if (fieldValues == values)
-      return Object.values(validationErrors).every((x) => x == "");
+    if (fieldValues === values)
+      return Object.values(validationErrors).every((x) => x === "");
   };
 
   const { values, setValues, errors, setErrors, handleInputChange, resetForm } =
@@ -83,15 +83,15 @@ const MortgageForm = ({ classes, ...props }) => {
         resetForm();
         addToast("Submitted successfully", { appearance: "success" });
       };
-      if (props.currentId == 0) props.createDCandidate(values, onSuccess);
+      if (props.currentId === 0) props.createDCandidate(values, onSuccess);
       else props.updateDCandidate(props.currentId, values, onSuccess);
     }
   };
 
   useEffect(() => {
-    if (props.currentId != 0) {
+    if (props.currentId !== 0) {
       setValues({
-        ...props.customerList.find((x) => x.id == props.currentId),
+        ...props.customerList.find((x) => x.id === props.currentId),
       });
       setErrors({});
     }
@@ -122,11 +122,7 @@ const MortgageForm = ({ classes, ...props }) => {
             <br /> <br />
           </Grid>
           <Grid item xs={6}>
-            <FormControl
-              variant="outlined"
-              className={classes.formControl}
-              // {...(errors.bloodGroup && { error: true })}
-            >
+            <FormControl variant="outlined" className={classes.formControl}>
               {/* <PopulateMigrationTypeCombo /> */}
               <TextField
                 name="mortgageType"
@@ -168,12 +164,12 @@ const MortgageForm = ({ classes, ...props }) => {
                 <FormHelperText>{errors.paymentType}</FormHelperText>
               )}
               <br />
-              <TextField
+              {/* <TextField
                 name="customerID"
                 value={values.id}
                 onChange={handleInputChange}
                 type="hidden"
-              />
+              /> */}
             </FormControl>
 
             <div>
@@ -203,16 +199,6 @@ const MortgageForm = ({ classes, ...props }) => {
           </Grid>
         </Grid>
       </form>
-      <Button
-        style={{ float: "right" }}
-        variant="contained"
-        color="primary"
-        type="submit"
-        className={classes.smMargin}
-        onClick={(event) => (window.location.href = "/Dashboard")}
-      >
-        NEXT
-      </Button>
     </div>
   );
 };

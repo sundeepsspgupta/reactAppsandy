@@ -14,7 +14,7 @@ import useForm from "./useForm";
 import { connect } from "react-redux";
 import * as actions from "../actions/customer";
 import { useToasts } from "react-toast-notifications";
-
+import { grey } from "@material-ui/core/colors";
 
 const styles = (theme) => ({
   root: {
@@ -83,7 +83,6 @@ const CustomerForm = ({ classes, ...props }) => {
   }, []);
 
   const handleSubmit = (e) => {
-    
     e.preventDefault();
     if (validate()) {
       const onSuccess = () => {
@@ -98,14 +97,19 @@ const CustomerForm = ({ classes, ...props }) => {
   // useEffect(() => {
   //   if (props.currentId != 0) {
   //     setValues({
-  //       ...props.dCandidateList.find((x) => x.id == props.currentId),
+  //       ...props.customerList.find((x) => x.id == props.currentId),
   //     });
   //     setErrors({});
   //   }
   // }, [props.currentId]);
 
   return (
-    <div>
+    <div
+      style={{
+        boxShadow: 1,
+        border: "1px solid black",
+      }}
+    >
       <form
         autoComplete="off"
         noValidate
@@ -113,7 +117,7 @@ const CustomerForm = ({ classes, ...props }) => {
         onSubmit={handleSubmit}
       >
         <Grid container>
-          <Grid item xs={2}>
+          <Grid item xs={3}>
             <br />
             <InputLabel className={classes.formControl} ref={inputLabel}>
               Title
@@ -223,21 +227,22 @@ const CustomerForm = ({ classes, ...props }) => {
               >
                 Submit
               </Button>
-
-              <Button
-                style={{ float: "right" }}
-                variant="contained"
-                color="primary"
-                type="submit"
-                className={classes.smMargin}
-                onClick={(event) => (window.location.href = "/Mortgage")}
-              >
-                NEXT
-              </Button>
             </div>
           </Grid>
         </Grid>
       </form>
+      <div>
+        <Button
+          style={{ float: "right" }}
+          variant="contained"
+          color="primary"
+          type="submit"
+          className={classes.smMargin}
+          onClick={(event) => (window.location.href = "/Mortgage")}
+        >
+          NEXT
+        </Button>
+      </div>
     </div>
   );
 };

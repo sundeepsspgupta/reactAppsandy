@@ -59,13 +59,25 @@ const MortgageDetails = ({ classes, ...props }) => {
   };
 
   return (
-    <Paper className={classes.paper} elevation={3}>
-      <Grid container>
-        <Grid item xs={6}>
-          <MortgageForm {...{ currentId, setCurrentId }} />
+    <div>
+      <Paper className={classes.paper} elevation={3}>
+        <Grid container>
+          <Grid item xs={6}>
+            <MortgageForm {...{ currentId, setCurrentId }} />
+          </Grid>
         </Grid>
-      </Grid>
-    </Paper>
+      </Paper>
+      <Button
+        style={{ float: "right" }}
+        variant="contained"
+        color="primary"
+        type="submit"
+        className={classes.smMargin}
+        onClick={(event) => (window.location.href = "/Dashboard")}
+      >
+        NEXT
+      </Button>
+    </div>
   );
 };
 
